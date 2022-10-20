@@ -4,4 +4,6 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = nextConfig
+const withCSS = require('@zeit/next-css');
+
+module.exports = nextConfig, withCSS({})
