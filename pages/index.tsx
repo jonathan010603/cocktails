@@ -10,10 +10,15 @@ import Wrapper from "../components/Wrapper";
 const index = () => {
   const [drinks, setDrinks] = useState([]);
   const [input, setInput] = useState("");
+  const [error, setError] = useState(false);
   const getDrinks = () => {
     input.length > 0
-      ? SearchDrinks(input).then(data => setDrinks(data))
-      : alert("Deu não")
+      ? SearchDrinks(input)
+        .then(data => {
+          setDrinks(data)
+          drinks.length === 0 && setError(true);
+        })
+      : setError(true);
   }
 
   return (
@@ -21,7 +26,7 @@ const index = () => {
       <Header />
       <main className={styles.main}>
         <Hero />
-        <Search changeInput={setInput} clicked={getDrinks} />
+        <Search changeInput={setInput} clicked={getDrinks} errorState={error} changeError={setError} />
         <Wrapper dataSource={drinks} />
         {!(drinks.length > 0)
           && <img src={'/logo_red.svg'} className={styles.bigLogo} />

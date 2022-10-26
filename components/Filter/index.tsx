@@ -1,6 +1,6 @@
 import styles from "./filter.module.scss";
 
-const Filter = ({ resultCount, modalHandler }: any) => {
+const Filter = ({ resultCount }: any) => {
     return (
         <div className={styles.container}>
             {resultCount} results
