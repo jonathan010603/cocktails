@@ -1,0 +1,17 @@
+.container {
+    width: 10rem;
+    height: 10rem;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.circle {
+    width: 10rem;
+    height: 10rem;
+    border-top: 0.5rem solid #f14049;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
