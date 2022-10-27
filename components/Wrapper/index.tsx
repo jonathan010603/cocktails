@@ -1,26 +1,26 @@
-import Card from "./Card";
-import styles from "./wrapper.module.scss";
 import { usePromiseTracker } from "react-promise-tracker";
-import CircleLoader from "../../components/CircleLoader";
-import Filter from "../Filter";
-import { useState } from "react";
-import Modal from "../Filter/Modal";
+import { GlobalContext } from "../../contexts/drinksCtx";
+import { CircleLoader } from "../../components";
+import { useContext } from "react";
+import styles from "./wrapper.module.scss";
+import Filter from "./Filter";
+import Card from "./Card";
 
-const Wrapper = ({ dataSource }: any) => {
+
+const Wrapper = () => {
     const { promiseInProgress } = usePromiseTracker();
+    const ctx = useContext(GlobalContext);
 
     return (
         <>
-            {dataSource.length > 0
-                && <Filter resultCount={dataSource.length} />
-            }
+            {ctx.drinks.length > 0 && <Filter />}
             {promiseInProgress
-                ? <CircleLoader /> :
-                <div id="searchField" className={styles.container}>
+                ? <CircleLoader />
+                : <div id="searchField" className={styles.container}>
                     {
-                        dataSource.map((drink: any) => {
-                            return <Card title={drink.strDrink} imgSrc={drink.strDrinkThumb} />
-                        })
+                        ctx.drinks.map(
+                            (drink: any) => <Card title={drink.strDrink} imgSrc={drink.strDrinkThumb} />
+                        )
                     }
                 </div>
             }

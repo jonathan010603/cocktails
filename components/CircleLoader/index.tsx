@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import styles from "./circleLoader.module.scss";
 
 const spinTransition = {
-    loop: Infinity,
+    repeat: Infinity,
     duration: 1,
     ease: "linear"
 }

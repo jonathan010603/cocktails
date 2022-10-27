@@ -1,9 +1,13 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../../contexts/drinksCtx";
 import styles from "./filter.module.scss";
 
-const Filter = ({ resultCount }: any) => {
+const Filter = () => {
+    const ctx = useContext(GlobalContext);
+
     return (
         <div className={styles.container}>
-            {resultCount} results
+            {ctx.drinks.length} results
             <span className={styles.filter}>
                 Filters
                 <img className={styles.img} src="/expand.svg" />
