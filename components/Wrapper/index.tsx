@@ -19,7 +19,7 @@ const Wrapper = () => {
                 : <div id="searchField" className={styles.container}>
                     {
                         ctx.meals.map(
-                            (meal: any) => <Card title={meal.strMeal} imgSrc={meal.strMealThumb} />
+                            (meal: any) => <Card title={meal.strMeal} imgSrc={meal.strMealThumb} id={meal.idMeal} />
                         )
                     }
                 </div>
