@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from "../../../contexts/drinksCtx";
+import { GlobalContext } from "../../../contexts/mealsCtx";
 import styles from "./filter.module.scss";
 
 const Filter = () => {
@@ -7,7 +7,7 @@ const Filter = () => {
 
     return (
         <div className={styles.container}>
-            {ctx.drinks.length} results
+            {ctx.meals.length} results
             <span className={styles.filter}>
                 Filters
                 <img className={styles.img} src="/expand.svg" />

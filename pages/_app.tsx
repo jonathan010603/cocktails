@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { ContextWrapper } from '../contexts/drinksCtx'
+import { ContextWrapper } from '../contexts/mealsCtx'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

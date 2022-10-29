@@ -1,17 +1,17 @@
 import { useContext, useRef } from "react";
-import { GlobalContext } from "../../contexts/drinksCtx";
-import { SearchDrinks } from "../../services/app.service";
+import { GlobalContext } from "../../contexts/mealsCtx";
+import { FetchApi } from "../../services/api";
 import styles from "./search.module.scss";
 
 const Search = () => {
     const ctx = useContext(GlobalContext);
     const input = useRef<any>("");
 
-    const getDrinks = () => {
-        ctx.setDrinks([]);
+    const getMeals = () => {
+        ctx.setMeals([]);
         input.current.value.length > 0
-            ? SearchDrinks(input.current.value)
-                .then(data => ctx.setDrinks(data))
+            ? FetchApi(input.current.value)
+                .then(data => ctx.setMeals(data))
                 .catch(ctx.setError(true))
             : (ctx.setError(true));
     }
@@ -33,7 +33,7 @@ const Search = () => {
                 placeholder="What would you like?"
                 onInput={() => ctx.setError(false)}
             />
-            <img className={styles.icon} src="/search.svg" onClick={getDrinks} />
+            <img className={styles.icon} src="/search.svg" onClick={getMeals} />
         </div>
     );
 }

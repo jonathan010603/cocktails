@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { GlobalContext } from "../../../contexts/drinksCtx";
+import { GlobalContext } from "../../../contexts/mealsCtx";
 import styles from "./card.module.scss"
 
 interface ICard {
@@ -10,7 +10,7 @@ interface ICard {
 const Card = ({ title, imgSrc }: ICard) => {
     const ctx = useContext(GlobalContext);
 
-    useEffect(() => ctx.drinks.length > 0 && ctx.setError(false), [ctx.drinks.length]);
+    useEffect(() => ctx.meals.length > 0 && ctx.setError(false), [ctx.meals.length]);
 
     return (
         <div className={styles.card}>

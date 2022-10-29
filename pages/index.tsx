@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { usePromiseTracker } from "react-promise-tracker";
 import { Header, Hero, Search, Wrapper } from "../components";
-import { GlobalContext } from "../contexts/drinksCtx";
+import { GlobalContext } from "../contexts/mealsCtx";
 import styles from "./index.module.scss";
 
 const index = () => {
@@ -16,9 +16,9 @@ const index = () => {
         <Search />
         <Wrapper />
         {
-          ctx.drinks.length === 0
+          ctx.meals.length === 0
           && !promiseInProgress
-          && <img src={'/logo_red.svg'} className={styles.bigLogo} />
+          && <img src={'/logo.svg'} className={styles.bigLogo} />
         }
       </main>
     </>

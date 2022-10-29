@@ -5,7 +5,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 0 10px 0 10px;
+    //padding: 0 10px 0 0px;
+
+    .burger {
+        margin-top: 1.5vh;
+        height: 7vh;
+    }
 }
 
 .logoContainer {
@@ -13,11 +19,14 @@
     align-items: center;
     
     .logoImage {
-        width: 30px;
-        height: 30px;
+        width:60vw;
+        //width: 20vw;
     }
 
     .logoTxt {
+        margin-top: 2vh;
+        display: flex;
+        align-items: center;
         font-size: 25px;
     }
 }

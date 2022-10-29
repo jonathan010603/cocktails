@@ -1,5 +1,5 @@
 import { usePromiseTracker } from "react-promise-tracker";
-import { GlobalContext } from "../../contexts/drinksCtx";
+import { GlobalContext } from "../../contexts/mealsCtx";
 import { CircleLoader } from "../../components";
 import { useContext } from "react";
 import styles from "./wrapper.module.scss";
@@ -13,13 +13,13 @@ const Wrapper = () => {
 
     return (
         <>
-            {ctx.drinks.length > 0 && <Filter />}
+            {ctx.meals.length > 0 && <Filter />}
             {promiseInProgress
                 ? <CircleLoader />
                 : <div id="searchField" className={styles.container}>
                     {
-                        ctx.drinks.map(
-                            (drink: any) => <Card title={drink.strDrink} imgSrc={drink.strDrinkThumb} />
+                        ctx.meals.map(
+                            (meal: any) => <Card title={meal.strMeal} imgSrc={meal.strMealThumb} />
                         )
                     }
                 </div>
