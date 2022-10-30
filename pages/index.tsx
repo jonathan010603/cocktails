@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { usePromiseTracker } from "react-promise-tracker";
 import { Header, Hero, Search, Wrapper } from "../components";
-import { GlobalContext } from "../contexts/mealsCtx";
+import { GlobalContext } from "../contexts/globalctx";
 import styles from "./index.module.scss";
 
 const index = () => {

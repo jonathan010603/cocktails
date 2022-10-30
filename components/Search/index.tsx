@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react";
-import { GlobalContext } from "../../contexts/mealsCtx";
+import { GlobalContext } from "../../contexts/globalctx";
 import { FetchApi } from "../../services/api";
 import styles from "./search.module.scss";
 

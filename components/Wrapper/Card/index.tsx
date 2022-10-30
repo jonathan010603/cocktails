@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
-import { GlobalContext } from "../../../contexts/mealsCtx";
+import { GlobalContext } from "../../../contexts/globalctx";
 import styles from "./card.module.scss"
 
 interface ICard {
     title: string,
     imgSrc: string,
-    id: Number
+    id: string
 }
 
 const Card = ({ title, imgSrc, id }: ICard) => {
