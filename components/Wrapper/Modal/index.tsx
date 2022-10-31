@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { GlobalContext } from "../../../contexts/globalctx";
 import styles from "./modal.module.scss";
 import SelectDropdown from "./Select";
@@ -51,15 +51,33 @@ const areas = [
 ]
 
 const Modal = () => {
+    const [localFilter, setLocalFilter] = useState([]);
     const ctx = useContext(GlobalContext);
 
+    const handleClick = () => {
+        ctx.setGlobalFilter(localFilter);
+        ctx.setFilterOpen(false);
+        document.body.style.overflow = 'unset';
+    }
+
     return (
-        <div id="outsideModal" className={styles.container}>
+        <div
+            id="outsideModal" className={styles.container}
+            style={{display: ctx.filterModal ? "flex" : "none"}}
+        >
             <div id="filterModal" className={styles.modal}>
                 <img id="closeModal" className={styles.close} src="/close.svg" />
-                <SelectDropdown label="Categories" options={categories} />
-                <SelectDropdown label="Areas" options={areas} />
-                <button className={styles.apply}>Apply</button>
+                <SelectDropdown
+                    label="Categories"
+                    options={categories}
+                    setLocalFilter={setLocalFilter}
+                />
+                <button
+                    className={styles.apply}
+                    onClick={() => handleClick()}
+                >
+                    Apply
+                </button>
             </div>
         </div>
     );

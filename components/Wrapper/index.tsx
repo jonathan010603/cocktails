@@ -1,7 +1,7 @@
 import { usePromiseTracker } from "react-promise-tracker";
 import { GlobalContext } from "../../contexts/globalctx";
 import { CircleLoader } from "../../components";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./wrapper.module.scss";
 import Filter from "./Filter";
 import Card from "./Card";
@@ -12,23 +12,30 @@ const Wrapper = () => {
     const { promiseInProgress } = usePromiseTracker();
     const ctx = useContext(GlobalContext);
 
+    const [cardsAmount, setAmount] = useState(0);
+
     return (
         <>
-            {ctx.filterModal && <Modal />}
-            {ctx.meals.length > 0 && <Filter />}
+            <Modal />
+            {ctx.meals.length > 0 && <Filter cardsAmount={cardsAmount} />}
             {promiseInProgress
                 ? <CircleLoader />
                 : <div id="searchField" className={styles.container}>
                     {
                         ctx.meals.map((meal: any) =>
-                            <Card
-                                key={meal.idMeal}
-                                id={meal.idMeal}
-                                title={meal.strMeal}
-                                imgSrc={meal.strMealThumb}
-                            />
+                            ctx.globalFilter.map((option: any) =>
+                                meal.strCategory === option.label
+                                &&
+                                < Card
+                                    key={meal.idMeal}
+                                    id={meal.idMeal}
+                                    title={meal.strMeal}
+                                    imgSrc={meal.strMealThumb}
+                                />
+                            )
                         )
                     }
+
                 </div>
             }
         </>

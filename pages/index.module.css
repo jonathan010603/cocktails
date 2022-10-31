@@ -1,0 +1,10 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bigLogo {
+  margin-top: 4vh;
+  width: 70%;
+}/*# sourceMappingURL=index.module.css.map */

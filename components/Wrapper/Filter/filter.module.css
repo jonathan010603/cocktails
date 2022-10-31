@@ -1,0 +1,19 @@
+.container {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 10vh;
+  padding: 0 4px 0 8px;
+  color: rgb(133, 127, 127);
+}
+.container .filter {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+}
+.container .img {
+  width: 7vw;
+}/*# sourceMappingURL=filter.module.css.map */

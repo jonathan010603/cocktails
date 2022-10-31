@@ -2,7 +2,11 @@ import { useContext, useEffect, useRef } from "react";
 import { GlobalContext } from "../../../contexts/globalctx";
 import styles from "./filter.module.scss";
 
-const Filter = () => {
+type props = {
+    cardsAmount: number
+}
+
+const Filter = ({ cardsAmount }: props) => {
     const ctx = useContext(GlobalContext);
     const filterRef = useRef<any>(null);
 
@@ -12,7 +16,10 @@ const Filter = () => {
     }
 
     const handleClickOutside = (e: any) => {
-        if (e.target.id === "outsideModal" || e.target.id === "closeModal") {
+        if (
+            e.target.id === "outsideModal"
+            || e.target.id === "closeModal"
+        ) {
             ctx.setFilterOpen(false);
             document.body.style.overflow = 'unset';
         }
@@ -25,7 +32,7 @@ const Filter = () => {
 
     return (
         <div className={styles.container}>
-            {ctx.meals.length} results
+            {cardsAmount > 0 && `${cardsAmount} results`}
             <span
                 ref={filterRef}
                 className={styles.filter}
