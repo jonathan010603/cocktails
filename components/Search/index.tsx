@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 import { GlobalContext } from "../../contexts/globalctx";
-import { FetchApi } from "../../services/api";
+import { FetchWord } from "../../services/api";
 import styles from "./search.module.scss";
 
 const Search = () => {
@@ -10,7 +10,7 @@ const Search = () => {
     const getMeals = () => {
         ctx.setMeals([]);
         input.current.value.length > 0
-            ? FetchApi(input.current.value)
+            ? FetchWord(input.current.value)
                 .then(data => ctx.setMeals(data))
                 .catch(ctx.setError(true))
             : (ctx.setError(true));

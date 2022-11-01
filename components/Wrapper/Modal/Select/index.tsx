@@ -1,6 +1,7 @@
 import Select from 'react-select';
 import styles from "./select.module.scss";
 import makeAnimated from 'react-select/animated';
+import { useId } from 'react';
 
 const SelectDropdown = ({ options, label, ref, setLocalFilter }: any) => {
     const animatedComponents = makeAnimated();
@@ -13,7 +14,7 @@ const SelectDropdown = ({ options, label, ref, setLocalFilter }: any) => {
         <div className={styles.container}>
             <span className={styles.label}>{label}</span>
             <Select
-                id="selectCategory"
+                instanceId={useId()}
                 ref={ref}
                 isMulti
                 onChange={handleChange}

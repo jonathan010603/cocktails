@@ -63,12 +63,11 @@ const Modal = () => {
     return (
         <div
             id="outsideModal" className={styles.container}
-            style={{display: ctx.filterModal ? "flex" : "none"}}
+            style={{ display: ctx.filterModal ? "flex" : "none" }}
         >
-            <div id="filterModal" className={styles.modal}>
+            <div className={styles.modal}>
                 <img id="closeModal" className={styles.close} src="/close.svg" />
                 <SelectDropdown
-                    label="Categories"
                     options={categories}
                     setLocalFilter={setLocalFilter}
                 />
