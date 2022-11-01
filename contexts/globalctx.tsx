@@ -11,7 +11,12 @@ export const ContextWrapper = ({ children }: { children: ReactNode }) => {
 
     return (
         <GlobalContext.Provider value={
-            { meals, setMeals, error, setError, filterModal, setFilterOpen, globalFilter, setGlobalFilter }
+            {
+                meals, setMeals,
+                error, setError,
+                filterModal, setFilterOpen,
+                globalFilter, setGlobalFilter
+            }
         }>
             {children}
         </GlobalContext.Provider>

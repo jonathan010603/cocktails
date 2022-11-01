@@ -1,7 +1,7 @@
+import { useContext, useState } from "react";
 import { usePromiseTracker } from "react-promise-tracker";
 import { GlobalContext } from "../../contexts/globalctx";
 import { CircleLoader } from "../../components";
-import { useContext, useState } from "react";
 import styles from "./wrapper.module.scss";
 import Filter from "./Filter";
 import Card from "./Card";
@@ -12,28 +12,32 @@ const Wrapper = () => {
     const { promiseInProgress } = usePromiseTracker();
     const ctx = useContext(GlobalContext);
 
-    const [cardsAmount, setAmount] = useState(0);
+    const renderCard = (meal: any) => {
+        return (
+            < Card
+                key={meal.idMeal}
+                id={meal.idMeal}
+                title={meal.strMeal}
+                imgSrc={meal.strMealThumb}
+            />
+        );
+    }
 
     return (
         <>
             <Modal />
-            {ctx.meals.length > 0 && <Filter cardsAmount={cardsAmount} />}
+            {ctx.meals.length > 0 && <Filter />}
             {promiseInProgress
                 ? <CircleLoader />
                 : <div id="searchField" className={styles.container}>
                     {
-                        ctx.meals.map((meal: any) =>
-                            ctx.globalFilter.map((option: any) =>
-                                meal.strCategory === option.label
-                                &&
-                                < Card
-                                    key={meal.idMeal}
-                                    id={meal.idMeal}
-                                    title={meal.strMeal}
-                                    imgSrc={meal.strMealThumb}
-                                />
+                        ctx.globalFilter.length === 0
+                            ? ctx.meals.map((meal: any) => renderCard(meal))
+                            : ctx.meals.map((meal: any) =>
+                                ctx.globalFilter.map(
+                                    (option: any) => meal.strCategory === option.label && renderCard(meal)
+                                )
                             )
-                        )
                     }
 
                 </div>

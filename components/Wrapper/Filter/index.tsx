@@ -6,7 +6,7 @@ type props = {
     cardsAmount: number
 }
 
-const Filter = ({ cardsAmount }: props) => {
+const Filter = () => {
     const ctx = useContext(GlobalContext);
     const filterRef = useRef<any>(null);
 
@@ -31,17 +31,19 @@ const Filter = ({ cardsAmount }: props) => {
     })
 
     return (
-        <div className={styles.container}>
-            {cardsAmount > 0 && `${cardsAmount} results`}
-            <span
-                ref={filterRef}
-                className={styles.filter}
-                onClick={() => activateModal()}
-            >
-                Filters
-                <img className={styles.img} src="/expand.svg" />
-            </span>
-        </div>
+        <>
+            <div className={styles.container}>
+                <span
+                    ref={filterRef}
+                    className={styles.filter}
+                    onClick={() => activateModal()}
+                >
+                    Filters
+                    <img className={styles.img} src="/expand.svg" />
+                </span>
+            </div>
+
+        </>
     );
 }
 
