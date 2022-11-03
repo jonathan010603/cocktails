@@ -1,25 +1,26 @@
-import { useRouter } from 'next/router'
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from '../../components';
-import { MealPageContext } from '../../contexts/mealPagectx';
-import { FetchId } from '../../services/api';
 import styles from "./meal.module.scss";
 
-type queries = {
-    id?: string
+type props = {
+    pageData?: any
 }
 
-const Meal = () => {
-    const MealCtx = useContext(MealPageContext);
-    const [pageData, setPageData] = useState<any>();
-    const router = useRouter();
-    const { id }: queries = router.query
+const Page = ({ pageData }: props) => {
+    const [ingredients, setIngredients] = useState<Array<string>>([])
 
-    useEffect(() => {
-        FetchId(id)
-            .then(data => setPageData(data))
-            .catch(e => console.log(e))
-    }, [])
+    const getIngredients = () => {
+        if (pageData !== null) {
+            for (let i = 1; i <= 20; i++) {
+                pageData?.[`strIngredient${i}`].length !== 0 &&
+                    setIngredients((ingredients) => (
+                        [...ingredients, pageData?.[`strIngredient${i}`]]
+                    ))
+            }
+        }
+    }
+
+    useEffect(() => getIngredients(), [])
 
     return (
         <>
@@ -27,9 +28,32 @@ const Meal = () => {
             <main className={styles.main}>
                 <h1 className={styles.title}>{pageData?.strMeal}</h1>
                 <img className={styles.image} src={pageData?.strMealThumb} />
+                <div className={styles.ingredients}>
+                    {
+                        ingredients.length > 0
+                        && ingredients.map(
+                            (ingredient: string | null) => <li>{ingredient}</li>
+                        )
+                    }
+                </div>
             </main>
         </>
     )
 }
 
-export default Meal;
+export default Page;
+
+export const getStaticProps = async ({ params }: any) => {
+    const results = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`).then(r => r.json());
+    return { props: { pageData: results.meals[0] } }
+}
+
+export const getStaticPaths = async () => {
+    const data = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s').then(r => r.json());
+    return {
+        paths: data.meals.map((meal: any) => {
+            return { params: { id: meal.idMeal } }
+        }),
+        fallback: false
+    }
+}

@@ -5,6 +5,7 @@
 }
 
 .title {
+    font-size: 7vw;
     margin-top: 18vh;
     color: black;
 }
@@ -12,4 +13,11 @@
 .image {
     width: 80vw;
     height: 35vh;
+}
+
+.ingredients {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    color: grey;
 }

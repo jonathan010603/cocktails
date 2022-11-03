@@ -13,7 +13,7 @@ const Search = () => {
             ? FetchWord(input.current.value)
                 .then(data => ctx.setMeals(data))
                 .catch(ctx.setError(true))
-            : (ctx.setError(true));
+            : ctx.setError(true);
     }
 
     const border = {

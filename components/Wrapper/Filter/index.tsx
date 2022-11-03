@@ -6,7 +6,7 @@ type props = {
     cardsAmount: number
 }
 
-const Filter = () => {
+const Filter = ({cardsAmount}: props) => {
     const ctx = useContext(GlobalContext);
     const filterRef = useRef<any>(null);
 
@@ -33,6 +33,7 @@ const Filter = () => {
     return (
         <>
             <div className={styles.container}>
+                {cardsAmount > 0 && `${cardsAmount} results`}
                 <span
                     ref={filterRef}
                     className={styles.filter}

@@ -13,7 +13,7 @@ const Card = ({ title, imgSrc, id }: ICard) => {
     const ctx = useContext(GlobalContext);
     const router = useRouter();
 
-    useEffect(() => ctx.meals.length > 0 && ctx.setError(false), [ctx.meals.length]);
+    useEffect(() => ctx.meals.length > 0 && ctx.setError(false), []);
 
     return (
         <div className={styles.card} onClick={() => router.push(`/meal/${id}`)}>

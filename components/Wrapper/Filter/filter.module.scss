@@ -1,18 +1,18 @@
 .container {
     cursor: pointer;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 10vh;
-    padding: 0 4px 0 8px;
+    padding: 0 4px 0 10px;
     color: rgb(133, 127, 127);
+    font-size: 5vw;
 
     .filter {
         display: flex;
         align-items: center;
-        align-self: flex-end;
     }
 
     .img {
