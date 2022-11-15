@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Header } from '../../components';
+import useGetIngredients from '../../Hooks/useGetIngredients';
 import styles from "./meal.module.scss";
 
 type props = {
@@ -7,20 +8,8 @@ type props = {
 }
 
 const Page = ({ pageData }: props) => {
-    const [ingredients, setIngredients] = useState<Array<string>>([])
 
-    const getIngredients = () => {
-        if (pageData !== null) {
-            for (let i = 1; i <= 20; i++) {
-                pageData?.[`strIngredient${i}`].length !== 0 &&
-                    setIngredients((ingredients) => (
-                        [...ingredients, pageData?.[`strIngredient${i}`]]
-                    ))
-            }
-        }
-    }
-
-    useEffect(() => getIngredients(), [])
+    let instructions = pageData?.strInstructions;
 
     return (
         <>
@@ -28,13 +17,8 @@ const Page = ({ pageData }: props) => {
             <main className={styles.main}>
                 <h1 className={styles.title}>{pageData?.strMeal}</h1>
                 <img className={styles.image} src={pageData?.strMealThumb} />
-                <div className={styles.ingredients}>
-                    {
-                        ingredients.length > 0
-                        && ingredients.map(
-                            (ingredient: string | null) => <li>{ingredient}</li>
-                        )
-                    }
+                <div className={styles.instrContainer}>
+                    • {instructions.replaceAll('\r\n', '.\n• ')}
                 </div>
             </main>
         </>
