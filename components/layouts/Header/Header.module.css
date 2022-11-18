@@ -3,16 +3,15 @@
   height: 15vh;
   z-index: 1000;
   padding: 0 10px 0 10px;
-  position: fixed;
-  background: #f14049;
   display: flex;
+  position: fixed;
   align-items: center;
   justify-content: space-between;
 }
 
 .burger {
-  margin-top: 1.5vh;
   height: 7vh;
+  margin-top: 1.5vh;
 }
 
 .logoContainer {
