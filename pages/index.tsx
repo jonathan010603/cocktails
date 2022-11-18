@@ -6,12 +6,14 @@ import { usePromiseTracker } from 'react-promise-tracker';
 import CircleLoader from '../components/ui/CircleLoader';
 import FetchWithWord, { IMeal } from '../services/FetchWithWord';
 import Card from '../components/Home/Card';
+import UnderSearch from '../components/Home/UnderSearch';
 
 const Home = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { promiseInProgress } = usePromiseTracker();
-  const [errorState, setErrorState] = useState<boolean>(false);
   const [meals, setMeals] = useState<Array<IMeal>>([]);
+  const [filters, setFilters] = useState<Array<String>>([]);
+  const [errorState, setErrorState] = useState<boolean>(false);
 
   const getMeals = async (query: string) =>
     setMeals(await FetchWithWord(query));
@@ -36,6 +38,7 @@ const Home = () => {
         <br />
         One place
       </div>
+
       <div className={styles.search}>
         <input
           className={styles.input}
@@ -50,9 +53,13 @@ const Home = () => {
           onClick={() => clickedSearch()}
         />
       </div>
+
+      {meals.length > 0 && <UnderSearch resultsAmount={meals.length} />}
+
       <div className={styles.wrapper}>
         {promiseInProgress ? <CircleLoader /> : renderCards()}
       </div>
+
       {meals.length === 0 && !promiseInProgress && <div>Lorem ipsum</div>}
     </main>
   );
