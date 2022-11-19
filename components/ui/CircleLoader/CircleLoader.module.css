@@ -1,7 +1,7 @@
 .container {
   width: 10rem;
   height: 10rem;
-  margin-top: 5vh;
+  margin: 10vh auto auto auto;
   display: flex;
   position: relative;
   box-sizing: border-box;

@@ -10,11 +10,10 @@
   width: 100%;
   height: 40vh;
   padding: 0 13px;
-  margin-top: 15vh;
   margin-bottom: 1vh;
   color: white;
 
-  font-size: 50px;
+  font-size: 45px;
   text-align: left;
 
   background-size: cover;
@@ -33,15 +32,15 @@
 .input {
   width: 100%;
   height: 100%;
-  padding: 0 15% 0 3%;
-  border-radius: 8px;
+  padding: 0 17% 0 4%;
+  border-radius: 30px;
 
   text-align: left;
   font-size: 18px;
   color: rgb(133, 127, 127);
 
-  background-color: transparent;
-  border: 1px solid rgb(133, 127, 127);
+  background-color: #f1f1f1;
+  border: none;
   outline: none;
 }
 
@@ -50,15 +49,15 @@
   right: 0%;
   width: 15%;
   height: 100%;
-  border-left: 1px solid rgb(133, 127, 127);
   transition: all ease-in-out 0.1s;
-  border-radius: 0 8px 8px 0;
+  background-color: #f14049;
+  border-radius: 0 30px 30px 0;
   position: absolute;
   cursor: pointer;
 }
 
 .icon:active {
-  background-color: #f14049;
+  background-color: #ffa3a8;
 }
 
 .wrapper {

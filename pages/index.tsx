@@ -1,12 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { usePromiseTracker } from 'react-promise-tracker';
 import CircleLoader from '../components/ui/CircleLoader';
 import FetchWithWord, { IMeal } from '../services/FetchWithWord';
 import Card from '../components/Home/Card';
-import UnderSearch from '../components/Home/UnderSearch';
+import ResultsAndFilter from '../components/Home/ResultsAndFilter';
+import { selectedMealContext } from '../context/selectedMealCtx';
 
 const Home = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -19,7 +20,13 @@ const Home = () => {
     setMeals(await FetchWithWord(query));
 
   const renderCards = () =>
-    meals?.map((item) => <Card key={item.idMeal} content={item} />);
+    meals?.map((item) => (
+      <Card
+        redirectTo={`/meals/${item.strMeal}`}
+        key={item.idMeal}
+        content={item}
+      />
+    ));
 
   const clickedSearch = async () => {
     inputRef.current !== null && inputRef.current.value.length > 0
@@ -44,17 +51,18 @@ const Home = () => {
           className={styles.input}
           type="text"
           ref={inputRef}
-          placeholder="What would you like?"
           onInput={() => setErrorState(false)}
         />
         <img
           className={styles.icon}
-          src="/assets/search.svg"
+          src="/assets/search.png"
           onClick={() => clickedSearch()}
         />
       </div>
 
-      {meals.length > 0 && <UnderSearch resultsAmount={meals.length} />}
+      {meals.length > 0 && !promiseInProgress && (
+        <ResultsAndFilter resultsAmount={meals.length} />
+      )}
 
       <div className={styles.wrapper}>
         {promiseInProgress ? <CircleLoader /> : renderCards()}

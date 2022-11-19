@@ -1,17 +1,15 @@
 .container {
   width: 100%;
-  height: 15vh;
+  height: 10vh;
   z-index: 1000;
   padding: 0 10px 0 10px;
   display: flex;
-  position: fixed;
   align-items: center;
   justify-content: space-between;
 }
 
 .burger {
   height: 7vh;
-  margin-top: 1.5vh;
 }
 
 .logoContainer {
@@ -19,5 +17,5 @@
   align-items: center;
 }
 .logoName {
-  width: 60vw;
+  width: 50vw;
 }

@@ -8,6 +8,7 @@ export interface IMeal {
   strMealThumb: string;
   strSource: string;
   strYoutube: string;
+  ingredients?: Array<string>;
 }
 
 const FetchWithWord = async (query: string): Promise<Array<IMeal>> => {
