@@ -4,10 +4,11 @@ import styles from '../styles/Home.module.css';
 import { useContext, useRef, useState } from 'react';
 import { usePromiseTracker } from 'react-promise-tracker';
 import CircleLoader from '../components/ui/CircleLoader';
-import FetchWithWord, { IMeal } from '../services/FetchWithWord';
 import Card from '../components/Home/Card';
 import ResultsAndFilter from '../components/Home/ResultsAndFilter';
 import { selectedMealContext } from '../context/selectedMealCtx';
+import { IMeal } from '../data/types';
+import FetchWithWord from '../services/FetchWithWord';
 
 const Home = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -68,7 +69,9 @@ const Home = () => {
         {promiseInProgress ? <CircleLoader /> : renderCards()}
       </div>
 
-      {meals.length === 0 && !promiseInProgress && <div>Lorem ipsum</div>}
+      {meals.length === 0 && !promiseInProgress && (
+        <img className={styles.bottomArt} src="/assets/art2.png" />
+      )}
     </main>
   );
 };

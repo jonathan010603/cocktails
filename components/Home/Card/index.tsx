@@ -1,8 +1,8 @@
-import { IMeal } from '../../../services/FetchWithWord';
 import styles from './Card.module.css';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { selectedMealContext } from '../../../context/selectedMealCtx';
+import { IMeal } from '../../../data/types';
 
 interface IProps {
   content: IMeal;

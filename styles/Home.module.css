@@ -68,3 +68,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.bottomArt {
+  margin-top: 3vh; 
+  width: 70vw;
+  height: 30vh;
+}

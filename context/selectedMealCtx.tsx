@@ -1,6 +1,5 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
-import { IMeal } from '../services/FetchWithWord';
-
+import { IMeal } from '../data/types';
 export interface ISelectedMeal {
   selectedMeal: IMeal | null;
   setSelectedMeal: Dispatch<SetStateAction<IMeal | null>>;
