@@ -12,7 +12,6 @@
 }
 
 .name {
-    text-align: center;
   top: 0;
   color: white;
   font-size: 35px;
@@ -32,30 +31,44 @@
 }
 
 .info span {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .info span img {
-    height: 4vh;
-    margin-right: 5px;
+  height: 4vh;
+  margin-right: 5px;
 }
 
-.ingredientsContainer {
+.ingredientsContainer,
+.instructionsContainer {
   margin-top: 3vh;
   display: flex;
   flex-direction: column;
 }
 
-.ingredientsBar {
+.ingredientsBar,
+.instructionsBar {
   text-align: center;
   height: 7vh;
   font-size: 30px;
   color: #f14049;
 }
 
-.ingredients {
+.ingredients,
+.instructionsWrapper {
   color: black;
   font-size: 20px;
   margin-left: 20px;
+}
+
+.instructionsContainer {
+  padding-right: 20px;
+}
+
+.instructionsBar {
+}
+
+.instructionsWrapper {
+  white-space: pre-line;
 }

@@ -15,6 +15,7 @@ const Meal = () => {
   if (!data) return <CircleLoader />;
 
   let ingredients = useGetIngredients(data[0]);
+  let instructions = data[0].strInstructions;
 
   return (
     <>
@@ -35,15 +36,23 @@ const Meal = () => {
           <span>
             <img src="/assets/category.svg" /> {data[0].strCategory}
           </span>
-          {/*<span>‣ Origin: {data[0].strArea}</span>
-          <span>‣ Category: {data[0].strCategory}</span>*/}
         </div>
       </div>
+
       <div className={styles.ingredientsContainer}>
         <div className={styles.ingredientsBar}>Ingredients</div>
         {ingredients.map((ingredient) => (
-          <span className={styles.ingredients}>{ingredient}</span>
+          <span key={ingredient} className={styles.ingredients}>
+            {ingredient}
+          </span>
         ))}
+      </div>
+
+      <div className={styles.instructionsContainer}>
+        <span className={styles.instructionsBar}>Instructions</span>
+        <span className={styles.instructionsWrapper}>
+          {'‣ ' + instructions.replaceAll('\r\n', '\n\n‣ ')}
+        </span>
       </div>
       <div></div>
     </>
