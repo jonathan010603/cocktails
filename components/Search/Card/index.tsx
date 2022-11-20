@@ -12,12 +12,12 @@ interface IProps {
 const Card = ({ content }: IProps) => {
   const selectedMealCtx = useContext(selectedMealContext);
   return (
-    <Link
-      href={`/meals/${content.strMeal}`}
-      className={styles.container}
-      onClick={() => selectedMealCtx?.setSelectedMeal(content)}
-    >
-      <span className={styles.title}>{content.strMeal}</span>
+    <Link href={`/meals/${content.idMeal}`} className={styles.container}>
+      <span className={styles.title}>
+        {content.strMeal.length > 15
+          ? content.strMeal.substring(0, 15) + '...'
+          : content.strMeal}
+      </span>
       <img className={styles.image} src={content.strMealThumb} />
     </Link>
   );

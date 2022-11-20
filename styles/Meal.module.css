@@ -1,0 +1,61 @@
+.imageTextDiv {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 45vh;
+  position: relative;
+  filter: brightness(60%);
+}
+
+.name {
+    text-align: center;
+  top: 0;
+  color: white;
+  font-size: 35px;
+  margin: 20px 20px;
+  position: absolute;
+}
+
+.info {
+  left: 0;
+  bottom: 0;
+  display: flex;
+  color: white;
+  font-size: 25px;
+  margin: 20px 20px;
+  position: absolute;
+  flex-direction: column;
+}
+
+.info span {
+    display: flex;
+    align-items: center;
+}
+
+.info span img {
+    height: 4vh;
+    margin-right: 5px;
+}
+
+.ingredientsContainer {
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredientsBar {
+  text-align: center;
+  height: 7vh;
+  font-size: 30px;
+  color: #f14049;
+}
+
+.ingredients {
+  color: black;
+  font-size: 20px;
+  margin-left: 20px;
+}

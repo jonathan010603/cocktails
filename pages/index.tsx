@@ -3,36 +3,17 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { useContext, useRef, useState } from 'react';
 import { usePromiseTracker } from 'react-promise-tracker';
-import CircleLoader from '../components/ui/CircleLoader';
-import Card from '../components/Home/Card';
-import ResultsAndFilter from '../components/Home/ResultsAndFilter';
-import { selectedMealContext } from '../context/selectedMealCtx';
 import { IMeal } from '../data/types';
-import FetchWithWord from '../services/FetchWithWord';
+import { useRouter } from 'next/router';
 
 const Home = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { promiseInProgress } = usePromiseTracker();
-  const [meals, setMeals] = useState<Array<IMeal>>([]);
-  const [filters, setFilters] = useState<Array<String>>([]);
-  const [errorState, setErrorState] = useState<boolean>(false);
-
-  const getMeals = async (query: string) =>
-    setMeals(await FetchWithWord(query));
-
-  const renderCards = () =>
-    meals?.map((item) => (
-      <Card
-        redirectTo={`/meals/${item.strMeal}`}
-        key={item.idMeal}
-        content={item}
-      />
-    ));
+  const router = useRouter();
 
   const clickedSearch = async () => {
-    inputRef.current !== null && inputRef.current.value.length > 0
-      ? (getMeals(inputRef.current.value), (inputRef.current.value = ''))
-      : setErrorState(true);
+    inputRef.current !== null &&
+      inputRef.current.value.length > 0 &&
+      router.push(`/search/${inputRef.current.value}`);
   };
 
   return (
@@ -48,30 +29,13 @@ const Home = () => {
       </div>
 
       <div className={styles.search}>
-        <input
-          className={styles.input}
-          type="text"
-          ref={inputRef}
-          onInput={() => setErrorState(false)}
-        />
+        <input className={styles.input} type="text" ref={inputRef} />
         <img
           className={styles.icon}
           src="/assets/search.png"
           onClick={() => clickedSearch()}
         />
       </div>
-
-      {meals.length > 0 && !promiseInProgress && (
-        <ResultsAndFilter resultsAmount={meals.length} />
-      )}
-
-      <div className={styles.wrapper}>
-        {promiseInProgress ? <CircleLoader /> : renderCards()}
-      </div>
-
-      {meals.length === 0 && !promiseInProgress && (
-        <img className={styles.bottomArt} src="/assets/art2.png" />
-      )}
     </main>
   );
 };
