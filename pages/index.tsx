@@ -5,10 +5,14 @@ import { useContext, useRef, useState } from 'react';
 import { usePromiseTracker } from 'react-promise-tracker';
 import { IMeal } from '../data/types';
 import { useRouter } from 'next/router';
+import { useFetch } from '../hooks/useFetch';
 
 const Home = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const { data } = useFetch(
+    `https://www.themealdb.com/api/json/v1/1/categories.php`
+  );
 
   const clickedSearch = async () => {
     inputRef.current !== null &&
@@ -36,6 +40,10 @@ const Home = () => {
           onClick={() => clickedSearch()}
         />
       </div>
+
+      {data?.map((category: any) => (
+        <span key={category.idCategory}>{category.strCategory}</span>
+      ))}
     </main>
   );
 };

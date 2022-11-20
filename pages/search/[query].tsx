@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { usePromiseTracker } from 'react-promise-tracker';
 import Card from '../../components/Search/Card';
-import ResultsAndFilter from '../../components/Home/ResultsAndFilter';
+import ResultsAndFilter from '../../components/Search/ResultsAndFilter';
 import CircleLoader from '../../components/ui/CircleLoader';
 import { useFetch } from '../../hooks/useFetch';
 import styles from '../../styles/Search.module.css';

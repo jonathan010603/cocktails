@@ -6,9 +6,21 @@ export const useFetch = (url: string) => {
     const res = await trackPromise(fetch(url));
     const data = await res.json();
 
-    if (data.meals.length === 0) return [];
-
-    return data.meals;
+    if (data.meals) {
+      if (data.meals.length === 0) {
+        return [];
+      } else {
+        return data.meals;
+      }
+    } 
+    
+    else if (data.categories) {
+      if (data.categories.length === 0) {
+        return [];
+      } else {
+        return data.categories;
+      }
+    }
   });
 
   return { data, error };

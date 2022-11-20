@@ -54,6 +54,7 @@ const Meal = () => {
           {'‣ ' + instructions.replaceAll('\r\n', '\n\n‣ ')}
         </span>
       </div>
+
       <div></div>
     </>
   );
