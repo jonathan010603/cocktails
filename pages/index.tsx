@@ -6,13 +6,12 @@ import { usePromiseTracker } from 'react-promise-tracker';
 import { IMeal } from '../data/types';
 import { useRouter } from 'next/router';
 import { useFetch } from '../hooks/useFetch';
+import { categoryData } from '../data/categories';
+import SearchInput from '../components/ui/SearchInput';
 
 const Home = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
-  const { data } = useFetch(
-    `https://www.themealdb.com/api/json/v1/1/categories.php`
-  );
 
   const clickedSearch = async () => {
     inputRef.current !== null &&
@@ -23,27 +22,26 @@ const Home = () => {
   return (
     <main className={styles.container}>
       <div className={styles.banner}>
-        Your
-        <br />
-        Favourite
-        <br />
-        Meals in
-        <br />
-        One place
+        <img className={styles.bannerImage} src={'/assets/art2.png'} />
       </div>
 
-      <div className={styles.search}>
-        <input className={styles.input} type="text" ref={inputRef} />
-        <img
-          className={styles.icon}
-          src="/assets/search.png"
-          onClick={() => clickedSearch()}
-        />
-      </div>
+      <SearchInput handleClick={clickedSearch} reference={inputRef} />
 
-      {data?.map((category: any) => (
-        <span key={category.idCategory}>{category.strCategory}</span>
-      ))}
+      <div className={styles.categoryWrapper}>
+        <span className={styles.categoriesBar}>
+          Categories
+          <img src={'/assets/expand.svg'} />
+        </span>
+        {categoryData?.map((category: any) => (
+          <div className={styles.categoriesDiv} key={category.idCategory}>
+            <img
+              src={category.strCategoryThumb}
+              className={styles.categoriesImages}
+            />
+            <span>{category.strCategory}</span>
+          </div>
+        ))}
+      </div>
     </main>
   );
 };

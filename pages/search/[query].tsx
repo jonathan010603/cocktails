@@ -4,6 +4,7 @@ import { usePromiseTracker } from 'react-promise-tracker';
 import Card from '../../components/Search/Card';
 import ResultsAndFilter from '../../components/Search/ResultsAndFilter';
 import CircleLoader from '../../components/ui/CircleLoader';
+import SearchInput from '../../components/ui/SearchInput';
 import { useFetch } from '../../hooks/useFetch';
 import styles from '../../styles/Search.module.css';
 
@@ -41,19 +42,7 @@ const SearchPage = () => {
 
   return (
     <main className={styles.container}>
-      <div className={styles.search}>
-        <input
-          className={styles.input}
-          type="text"
-          ref={inputRef}
-          onInput={() => setErrorState(false)}
-        />
-        <img
-          className={styles.icon}
-          src="/assets/search.png"
-          onClick={() => clickedSearch()}
-        />
-      </div>
+      <SearchInput handleClick={clickedSearch} reference={inputRef} />
 
       {data?.length > 0 && data && (
         <ResultsAndFilter resultsAmount={data.length} />
@@ -62,10 +51,6 @@ const SearchPage = () => {
       <div className={styles.wrapper}>
         {!data && promiseInProgress ? <CircleLoader /> : renderCards()}
       </div>
-
-      {!(data?.length > 0) && !promiseInProgress && (
-        <img className={styles.bottomArt} src="/assets/art2.png" />
-      )}
     </main>
   );
 };

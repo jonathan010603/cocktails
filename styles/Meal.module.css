@@ -53,6 +53,7 @@
   height: 7vh;
   font-size: 30px;
   color: #f14049;
+  align-self: center;
 }
 
 .ingredients,
@@ -63,12 +64,12 @@
 }
 
 .instructionsContainer {
-  padding-right: 20px;
 }
 
 .instructionsBar {
 }
 
 .instructionsWrapper {
+  padding-right: 20px;
   white-space: pre-line;
 }
