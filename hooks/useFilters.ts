@@ -10,8 +10,8 @@ const useFilters = ({ data, filters }: Iprops) => {
 
   if (filters.length === 0) return data;
 
-  data.map((meal) =>
-    filters.map(
+  data?.map((meal) =>
+    filters?.map(
       (filter) => filter.value === meal.strCategory && filteredItems.push(meal)
     )
   );

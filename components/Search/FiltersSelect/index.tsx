@@ -35,6 +35,7 @@ const FiltersSelect = ({ setFilters }: IProps) => {
   return (
     <div className={styles.container}>
       <Select
+        placeholder={'Filters'}
         instanceId={useId()}
         isMulti
         onChange={handleChange}
@@ -43,7 +44,61 @@ const FiltersSelect = ({ setFilters }: IProps) => {
         components={animatedComponents}
         className={styles.select}
         styles={{
-          
+          control: (baseStyles) => ({
+            ...baseStyles,
+            width: '100%',
+            alignSelf: 'flex-start',
+            boxShadow: 'none',
+            border: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }),
+          container: (baseStyles) => ({
+            ...baseStyles,
+            width: '97%',
+            margin: '0 auto 1vh auto',
+            marginBottom: '3vh',
+          }),
+          indicatorsContainer: (baseStyles) => ({
+            ...baseStyles,
+            width: '25%',
+            margin: '2vh auto 0 auto',
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }),
+          clearIndicator: (baseStyles) => ({
+            ...baseStyles,
+            margin: '0 2.5px 0 2.5px',
+            color: '#f76565',
+            border: '1px solid #f76565',
+          }),
+          dropdownIndicator: (baseStyles) => ({
+            ...baseStyles,
+            margin: '0 2.5px 0 2.5px',
+            color: '#f76565',
+            border: '1px solid #f76565',
+          }),
+          indicatorSeparator: (baseStyles) => ({
+            ...baseStyles,
+            backgroundColor: 'transparent',
+          }),
+          multiValue: (baseStyles) => ({
+            ...baseStyles,
+            width: '100%',
+            color: '#FFFFFF',
+            backgroundColor: '#f76565',
+          }),
+          multiValueLabel: (baseStyles) => ({
+            ...baseStyles,
+            color: '#FFFFFF',
+          }),
+          input: (baseStyles) => ({
+            ...baseStyles,
+            display: 'none',
+          }),
         }}
       />
     </div>

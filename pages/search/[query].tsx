@@ -24,8 +24,6 @@ const SearchPage = () => {
     }
   }, []);
 
-  useEffect(() => console.log(filters), [filters]);
-
   const { data } = useFetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
   );
@@ -50,13 +48,25 @@ const SearchPage = () => {
   return (
     <main className={styles.container}>
       <SearchInput handleClick={clickedSearch} reference={inputRef} />
-      <div>
-        <FiltersSelect setFilters={setFilters} />
-        {`${filteredItems.length} results`}
-      </div>
+      {filteredItems?.length > 0 && (
+        <div className={styles.filters}>
+          <FiltersSelect setFilters={setFilters} />
+        </div>
+      )}
 
-      <div className={styles.wrapper}>
-        {!filteredItems && promiseInProgress ? <CircleLoader /> : renderCards()}
+      <div className={styles.results}>
+        {filteredItems?.length > 0 && (
+          <span className={styles.resultsAmount}>
+            {`${filteredItems?.length} results`}
+          </span>
+        )}
+        <div className={styles.wrapper}>
+          {!filteredItems && promiseInProgress ? (
+            <CircleLoader />
+          ) : (
+            renderCards()
+          )}
+        </div>
       </div>
     </main>
   );

@@ -16,15 +16,31 @@
 
 .wrapper {
   width: 100%;
-  padding: 0 7px;
-  color: black;
   display: flex;
+  color: black;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .bottomArt {
-  margin-top: 3vh;
   width: 70vw;
   height: 30vh;
+  margin-top: 3vh;
+}
+
+.filters {
+  width: 95vw;
+  margin: 3vh 0 3vh 0;
+  border-bottom: 1px solid red;
+}
+
+.results {
+  padding: 0 7px;
+  display: flex;
+  flex-direction: column;
+}
+
+.results .resultsAmount {
+  margin-bottom: 3vh;
+  text-align: center;
 }
