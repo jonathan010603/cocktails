@@ -8,3 +8,8 @@ export interface IMeal {
   strYoutube: string;
   ingredients?: Array<string>;
 }
+
+export interface IFilters {
+  value: string;
+  label: string;
+}

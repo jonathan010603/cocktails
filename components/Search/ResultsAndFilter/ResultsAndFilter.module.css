@@ -8,6 +8,7 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 }
 
 .filter {
@@ -19,4 +20,24 @@
 
 .img {
   width: 6vw;
+}
+
+.filtersTooltip {
+  z-index: 910;
+  left: 5vw;
+  top: 9vh;
+  position: absolute;
+  width: 90vw;
+  height: 50vh;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.filtersTooltip::after {
+  content: ' ';
+  position: absolute;
+  top: -2.7vh;
+  right: 6vw;
+  border: 10px solid;
+  border-color: transparent transparent #000000 transparent;
 }

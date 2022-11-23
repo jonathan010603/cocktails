@@ -12,6 +12,7 @@ const ResultsAndFilter = ({ resultsAmount }: IProps) => {
         Filters
         <img className={styles.img} src="/assets/plus.png" />
       </div>
+      <div className={styles.filtersTooltip}></div>
     </div>
   );
 };
